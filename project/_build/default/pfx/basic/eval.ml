@@ -10,11 +10,75 @@ let string_of_state (cmds,stack) =
     (sprintf " with stack %s" (string_of_stack stack))
 
 (* Question 4.2 *)
+
 let step state =
   match state with
-  | [], _ -> Error("Nothing to step",state)
-  (* Valid configurations *)
-  | DefineMe :: q , stack          -> Ok (q, stack)
+  | [], _ -> Error("Nothing to step", state)
+  
+  | Push n :: q, stack -> 
+      Ok(q, n :: stack)
+  
+  | Pop :: q, _ :: stack -> 
+      Ok(q, stack)
+  | Pop :: _, [] -> 
+      Error("Pop on empty stack", state)
+  
+  | Swap :: q, a :: b :: stack -> 
+      Ok(q, b :: a :: stack)
+  | Swap :: _, _ -> 
+      Error("Not enough values to swap", state)
+  
+  | Nget :: q, n :: stack ->
+      if n < 0 || n >= List.length stack then
+        Error("Nget index out of bounds", state)
+      else
+        Ok(q, (List.nth stack n) :: stack)
+  | Nget :: _, [] ->
+      Error("Nget on empty stack", state)
+  
+  | Store :: q, addr :: value :: stack ->
+      (* Assuming memory is represented as part of the state which isn't shown here.
+         This would need to be modified based on your actual memory model. *)
+      Error("Store not implemented in this simplified model", state)
+  | Store :: _, _ ->
+      Error("Not enough values for store", state)
+  
+  | Load :: q, addr :: stack ->
+      (* Similar to Store, this requires a memory model *)
+      Error("Load not implemented in this simplified model", state)
+  | Load :: _, [] ->
+      Error("Load on empty stack", state)
+  
+  | Add :: q, b :: a :: stack ->
+      Ok(q, (a + b) :: stack)
+  | Add :: _, _ ->
+      Error("Not enough values for addition", state)
+  
+  | Sub :: q, b :: a :: stack ->
+      Ok(q, (a - b) :: stack)
+  | Sub :: _, _ ->
+      Error("Not enough values for subtraction", state)
+  
+  | Mul :: q, b :: a :: stack ->
+      Ok(q, (a * b) :: stack)
+  | Mul :: _, _ ->
+      Error("Not enough values for multiplication", state)
+  
+  | Div :: q, 0 :: _ :: _ ->
+      Error("Division by zero", state)
+  | Div :: q, b :: a :: stack ->
+      Ok(q, (a / b) :: stack)
+  | Div :: _, _ ->
+      Error("Not enough values for division", state)
+  
+  | Print :: q, a :: stack ->
+      print_int a;
+      print_newline();
+      Ok(q, a :: stack)  (* Print doesn't consume the value *)
+  | Print :: _, [] ->
+      Error("Print on empty stack", state)
+
+
 
 let eval_program (numargs, cmds) args =
   let rec execute = function

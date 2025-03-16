@@ -22,7 +22,6 @@ Clflags.include_dirs :=
   ; "/home/chahboune/.opam/default/lib/zed"
   ; "/usr/lib/ocaml/compiler-libs"
   ; "/usr/lib/ocaml/threads"
-  ; "/home/chahboune/project-skeleton/project/_build/default/expr/common/.common.objs/byte"
   ; "/home/chahboune/project-skeleton/project/_build/default/pfx/basic/.basicPfx.objs/byte"
   ; "/home/chahboune/project-skeleton/project/_build/default/utils/.utils.objs/byte"
   ];

@@ -11,7 +11,7 @@ let string_of_state (cmds,stack) =
 
 (* Question 4.2 *)
 
-let step state =
+let step state = 
   match state with
   | [], _ -> Error("Nothing to step", state)
   
@@ -67,7 +67,7 @@ let step state =
   | Div :: q, 0 :: _ :: _ ->
       Error("Division by zero", state)
   | Div :: q, b :: a :: stack ->
-      Ok(q, (a / b) :: stack)
+      Ok(q, (a/b) :: stack)
   | Div :: _, _ ->
       Error("Not enough values for division", state)
   

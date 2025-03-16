@@ -1,0 +1,10 @@
+open Ast
+open Eval
+
+let test1 () =
+  let program = (0, [Push 5; Push 3; Add; Print]) in
+  print_endline "Test 1: 5 + 3";
+  eval_program program []
+
+let () =
+  test1 ();

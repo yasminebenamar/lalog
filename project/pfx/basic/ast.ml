@@ -26,7 +26,7 @@ type command =
 
 
 let string_of_command = function
-  | DefineMe -> "to be done"
+  | _ -> "to be done"
 
 let string_of_commands cmds = String.concat " " (List.map string_of_command cmds)
 

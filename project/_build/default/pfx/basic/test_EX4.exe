@@ -1,0 +1,19 @@
+(* Ouvrir les modules nécessaires *)
+open Ast
+open Eval
+
+let test1 () =
+  let program = (0, [Push 5; Push 3; Add; Print]) in
+  print_endline "Test 1: 5 + 3";
+  eval_program program []
+
+let test2 () =
+  let program = (2, [Push 0; Nget; Push 1; Nget; Sub; Print]) in
+  print_endline "Test 2: a - b avec a=10, b=4";
+  eval_program program [10; 4]
+
+(* Exécuter les tests *)
+let () =
+  test1 ();
+  print_endline "------------------------";
+  test2 ()
