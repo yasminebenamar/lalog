@@ -1,38 +1,157 @@
-# dune utop
+# dune build expr/compiler.exe
 # OCAMLPARAM: unset
-# Shared cache: enabled-except-user-rules
-# Shared cache location: /home/chahboune/.cache/dune/db
 # Workspace root: /home/chahboune/project-skeleton/project
+$ /usr/bin/nproc > /tmp/dune32ff20.output 2> /dev/null
 # Auto-detected concurrency: 16
+# disable binary cache
+$ /usr/bin/ocamlc.opt -config > /tmp/duneef3827.output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
-#  ; profile = Dev
+#  ; profile = Dyn
 #  ; merlin = true
+#  ; for_host = None
 #  ; fdo_target_exe = None
-#  ; build_dir = In_build_dir "default"
-#  ; instrument_with = []
+#  ; build_dir = "default"
+#  ; toplevel_path = None
+#  ; ocaml_bin = External "/usr/bin"
+#  ; ocaml = Ok External "/usr/bin/ocaml"
+#  ; ocamlc = External "/usr/bin/ocamlc.opt"
+#  ; ocamlopt = Ok External "/usr/bin/ocamlopt.opt"
+#  ; ocamldep = Ok External "/usr/bin/ocamldep.opt"
+#  ; ocamlmklib = Ok External "/usr/bin/ocamlmklib.opt"
+#  ; env =
+#      map
+#        { "CAML_LD_LIBRARY_PATH" :
+#            "/home/chahboune/project-skeleton/project/_build/install/default/lib/stublibs"
+#        ; "DUNE_OCAML_HARDCODED" : "/usr/lib/ocaml"
+#        ; "DUNE_OCAML_STDLIB" : "/usr/lib/ocaml"
+#        ; "DUNE_SOURCEROOT" : "/home/chahboune/project-skeleton/project"
+#        ; "INSIDE_DUNE" :
+#            "/home/chahboune/project-skeleton/project/_build/default"
+#        ; "MANPATH" :
+#            "/home/chahboune/project-skeleton/project/_build/install/default/bin"
+#        ; "OCAMLFIND_IGNORE_DUPS_IN" :
+#            "/home/chahboune/project-skeleton/project/_build/install/default/lib"
+#        ; "OCAMLPATH" :
+#            "/home/chahboune/project-skeleton/project/_build/install/default/lib"
+#        ; "OCAMLTOP_INCLUDE_PATH" :
+#            "/home/chahboune/project-skeleton/project/_build/install/default/lib/toplevel"
+#        ; "OCAML_COLOR" : "always"
+#        ; "OPAMCOLOR" : "always"
+#        }
+#  ; findlib_path = [ External "/usr/lib/ocaml" ]
+#  ; arch_sixtyfour = true
+#  ; natdynlink_supported = true
+#  ; supports_shared_libraries = true
+#  ; ocaml_config =
+#      { version = "4.13.1"
+#      ; standard_library_default = "/usr/lib/ocaml"
+#      ; standard_library = "/usr/lib/ocaml"
+#      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
+#      ; ccomp_type = "cc"
+#      ; c_compiler = "x86_64-linux-gnu-gcc"
+#      ; ocamlc_cflags =
+#          [ "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-pthread"
+#          ; "-fPIC"
+#          ; "-g"
+#          ; "-O2"
+#          ; "-ffile-prefix-map=/build/ocaml-SC7b9w/ocaml-4.13.1=."
+#          ; "-fstack-protector-strong"
+#          ; "-Wformat"
+#          ; "-Werror=format-security"
+#          ]
+#      ; ocamlc_cppflags =
+#          [ "-D_FILE_OFFSET_BITS=64"; "-Wdate-time"; "-D_FORTIFY_SOURCE=2" ]
+#      ; ocamlopt_cflags =
+#          [ "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-pthread"
+#          ; "-fPIC"
+#          ; "-g"
+#          ; "-O2"
+#          ; "-ffile-prefix-map=/build/ocaml-SC7b9w/ocaml-4.13.1=."
+#          ; "-fstack-protector-strong"
+#          ; "-Wformat"
+#          ; "-Werror=format-security"
+#          ]
+#      ; ocamlopt_cppflags =
+#          [ "-D_FILE_OFFSET_BITS=64"; "-Wdate-time"; "-D_FORTIFY_SOURCE=2" ]
+#      ; bytecomp_c_compiler =
+#          [ "x86_64-linux-gnu-gcc"
+#          ; "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-pthread"
+#          ; "-fPIC"
+#          ; "-g"
+#          ; "-O2"
+#          ; "-ffile-prefix-map=/build/ocaml-SC7b9w/ocaml-4.13.1=."
+#          ; "-fstack-protector-strong"
+#          ; "-Wformat"
+#          ; "-Werror=format-security"
+#          ; "-D_FILE_OFFSET_BITS=64"
+#          ; "-Wdate-time"
+#          ; "-D_FORTIFY_SOURCE=2"
+#          ]
+#      ; bytecomp_c_libraries = [ "-lm"; "-lpthread" ]
+#      ; native_c_compiler =
+#          [ "x86_64-linux-gnu-gcc"
+#          ; "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-pthread"
+#          ; "-fPIC"
+#          ; "-g"
+#          ; "-O2"
+#          ; "-ffile-prefix-map=/build/ocaml-SC7b9w/ocaml-4.13.1=."
+#          ; "-fstack-protector-strong"
+#          ; "-Wformat"
+#          ; "-Werror=format-security"
+#          ; "-D_FILE_OFFSET_BITS=64"
+#          ; "-Wdate-time"
+#          ; "-D_FORTIFY_SOURCE=2"
+#          ]
+#      ; native_c_libraries = [ "-lm" ]
+#      ; cc_profile = []
+#      ; architecture = "amd64"
+#      ; model = "default"
+#      ; int_size = 63
+#      ; word_size = 64
+#      ; system = "linux"
+#      ; asm = [ "x86_64-linux-gnu-as" ]
+#      ; asm_cfi_supported = true
+#      ; with_frame_pointers = false
+#      ; ext_exe = ""
+#      ; ext_obj = ".o"
+#      ; ext_asm = ".s"
+#      ; ext_lib = ".a"
+#      ; ext_dll = ".so"
+#      ; os_type = "Unix"
+#      ; default_executable_name = "a.out"
+#      ; systhread_supported = true
+#      ; host = "x86_64-pc-linux-gnu"
+#      ; target = "x86_64-pc-linux-gnu"
+#      ; profiling = false
+#      ; flambda = false
+#      ; spacetime = false
+#      ; safe_string = true
+#      ; exec_magic_number = "Caml1999X030"
+#      ; cmi_magic_number = "Caml1999I030"
+#      ; cmo_magic_number = "Caml1999O030"
+#      ; cma_magic_number = "Caml1999A030"
+#      ; cmx_magic_number = "Caml1999Y030"
+#      ; cmxa_magic_number = "Caml1999Z030"
+#      ; ast_impl_magic_number = "Caml1999M030"
+#      ; ast_intf_magic_number = "Caml1999N030"
+#      ; cmxs_magic_number = "Caml1999D030"
+#      ; cmt_magic_number = "Caml1999T030"
+#      ; natdynlink_supported = true
+#      ; supports_shared_libraries = true
+#      ; windows_unicode = false
+#      }
 #  }
-$ /usr/bin/ocamlc.opt -config > /tmp/dune_bb94dc_output
-$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I pfx/basic/.basicPfx.objs/byte -I utils/.utils.objs/byte -intf-suffix .ml -no-alias-deps -opaque -open BasicPfx -o pfx/basic/.basicPfx.objs/byte/basicPfx__Ast.cmo -c -impl pfx/basic/ast.ml)
-> File "pfx/basic/ast.ml", lines 9-24, characters 0-9:
->  9 | type command =
-> 10 | 
-> 11 |   | Push of int      (* Empile une valeur *)
-> 12 |   | Pop              (* Dépile la valeur du sommet *)
-> 13 |   | Swap             (* Échange les deux valeurs du sommet *)
-> ...
-> 21 |   | Mul              (* Multiplication *)
-> 22 |   | Div              (* Division *)
-> 23 |     
-> 24 |   | Print.............................................
-> Error: Multiple definition of the type name command.
->        Names must be unique in a given structure or signature.
-[2]
-$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I pfx/basic/.basicPfx.objs/byte -I utils/.utils.objs/byte -intf-suffix .ml -no-alias-deps -opaque -open BasicPfx -o pfx/basic/.basicPfx.objs/byte/basicPfx__Eval.cmo -c -impl pfx/basic/eval.ml)
-> File "pfx/basic/eval.ml", line 18, characters 4-8:
-> 18 |   | Push n :: q, stack -> 
->          ^^^^
-> Error: Unbound constructor Push
-[2]
-$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -24 -g -bin-annot -I .utop/.utop.eobjs/byte -I /home/chahboune/.opam/default/lib/bytes -I /home/chahboune/.opam/default/lib/findlib -I /home/chahboune/.opam/default/lib/lambda-term -I /home/chahboune/.opam/default/lib/logs -I /home/chahboune/.opam/default/lib/lwt -I /home/chahboune/.opam/default/lib/lwt/unix -I /home/chahboune/.opam/default/lib/lwt_react -I /home/chahboune/.opam/default/lib/mew -I /home/chahboune/.opam/default/lib/mew_vi -I /home/chahboune/.opam/default/lib/ocplib-endian -I /home/chahboune/.opam/default/lib/ocplib-endian/bigstring -I /home/chahboune/.opam/default/lib/react -I /home/chahboune/.opam/default/lib/result -I /home/chahboune/.opam/default/lib/trie -I /home/chahboune/.opam/default/lib/uchar -I /home/chahboune/.opam/default/lib/utop -I /home/chahboune/.opam/default/lib/uucp -I /home/chahboune/.opam/default/lib/uuseg -I /home/chahboune/.opam/default/lib/uutf -I /home/chahboune/.opam/default/lib/xdg -I /home/chahboune/.opam/default/lib/zed -I /usr/lib/ocaml/compiler-libs -I /usr/lib/ocaml/threads -I expr/common/.common.objs/byte -I pfx/basic/.basicPfx.objs/byte -I utils/.utils.objs/byte -no-alias-deps -o .utop/.utop.eobjs/byte/dune__exe__Utop.cmo -c -impl .utop/utop.ml-gen)
