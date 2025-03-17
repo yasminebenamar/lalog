@@ -36,14 +36,14 @@ let step state =
   | Nget :: _, [] ->
       Error("Nget on empty stack", state)
   
-  | Store :: q, addr :: value :: stack ->
+  | Store :: _q, _addr :: _value :: _stack ->
       (* Assuming memory is represented as part of the state which isn't shown here.
          This would need to be modified based on your actual memory model. *)
       Error("Store not implemented in this simplified model", state)
   | Store :: _, _ ->
       Error("Not enough values for store", state)
   
-  | Load :: q, addr :: stack ->
+  | Load :: _q, _addr :: _stack ->
       (* Similar to Store, this requires a memory model *)
       Error("Load not implemented in this simplified model", state)
   | Load :: _, [] ->
@@ -64,13 +64,27 @@ let step state =
   | Mul :: _, _ ->
       Error("Not enough values for multiplication", state)
   
-  | Div :: q, 0 :: _ :: _ ->
+  | Div :: _q, 0 :: _ :: _ ->
       Error("Division by zero", state)
   | Div :: q, b :: a :: stack ->
       Ok(q, (a/b) :: stack)
   | Div :: _, _ ->
       Error("Not enough values for division", state)
+  | Rem :: _q, 0 :: _ :: _ ->
+      Error("Modulo by zero", state)
+  | Rem :: q, b :: a :: stack ->
+      Ok(q, (a mod b) :: stack)  (* OCaml standard modulo *)
+  | Rem :: _, _ ->
+      Error("Not enough values for remainder operation", state)
   
+  | Mod :: _q, 0 :: _ :: _ ->
+      Error("Modulo by zero", state)
+  | Mod :: q, b :: a :: stack ->
+      (* Pour Mod, on peut utiliser la même implémentation que Rem dans ce cas simple *)
+      Ok(q, (a mod b) :: stack)
+  | Mod :: _, _ ->
+      Error("Not enough values for modulo operation", state)
+      
   | Print :: q, a :: stack ->
       print_int a;
       print_newline();

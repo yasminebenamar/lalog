@@ -1,10 +1,10 @@
-# dune build expr/compiler.exe
+# dune exec ./compiler.exe -- basic/tests/an_example.expr
 # OCAMLPARAM: unset
 # Workspace root: /home/chahboune/project-skeleton/project
-$ /usr/bin/nproc > /tmp/dune32ff20.output 2> /dev/null
+$ /usr/bin/nproc > /tmp/dune67f1bf.output 2> /dev/null
 # Auto-detected concurrency: 16
 # disable binary cache
-$ /usr/bin/ocamlc.opt -config > /tmp/duneef3827.output
+$ /usr/bin/ocamlc.opt -config > /tmp/dunef8fee0.output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -155,3 +155,8 @@ $ /usr/bin/ocamlc.opt -config > /tmp/duneef3827.output
 #      ; windows_unicode = false
 #      }
 #  }
+# Workspace root: /home/chahboune/project-skeleton/project
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl expr/basic/toPfx.ml) > _build/default/expr/basic/.basicExpr.objs/toPfx.ml.d
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I expr/basic/.basicExpr.objs/byte -I expr/basic/.basicExpr.objs/native -I expr/common/.common.objs/byte -I expr/common/.common.objs/native -I pfx/basic/.basicPfx.objs/byte -I pfx/basic/.basicPfx.objs/native -I utils/.utils.objs/byte -I utils/.utils.objs/native -intf-suffix .ml -no-alias-deps -opaque -open BasicExpr -o expr/basic/.basicExpr.objs/native/basicExpr__ToPfx.cmx -c -impl expr/basic/toPfx.ml)
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o expr/basic/basicExpr.cmxa expr/basic/.basicExpr.objs/native/basicExpr.cmx expr/basic/.basicExpr.objs/native/basicExpr__Ast.cmx expr/basic/.basicExpr.objs/native/basicExpr__ToPfx.cmx expr/basic/.basicExpr.objs/native/basicExpr__Parser.cmx expr/basic/.basicExpr.objs/native/basicExpr__Lexer.cmx expr/basic/.basicExpr.objs/native/basicExpr__Eval.cmx)
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o expr/compiler.exe utils/utils.cmxa expr/common/common.cmxa pfx/basic/basicPfx.cmxa expr/basic/basicExpr.cmxa expr/.main.eobjs/native/dune__exe.cmx expr/.main.eobjs/native/dune__exe__Compiler.cmx)

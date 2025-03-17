@@ -1,34 +1,37 @@
-type command =
-  DefineMe (* Question 4.1 *)
 
+(* The type of the commands for the stack machine *)
+type command =
+  | Push of int    (* Push a constant onto the stack *)
+  | Pop            (* Remove the top element from the stack *)
+  | Swap           (* Swap the top two elements of the stack *)
+  | Nget           (* Get the nth element from the stack *)
+  | Store          (* Store a value at a memory location *)
+  | Load           (* Load a value from a memory location *)
+  | Add            (* Add the top two elements *)
+  | Sub            (* Subtract the top element from the second element *)
+  | Mul            (* Multiply the top two elements *)
+  | Div            (* Divide the second element by the top element *)  
+  | Rem    (* Nouveau constructeur pour le modulo *)
+  | Mod
+  | Print          (* Print the top element without removing it *)
+
+(* The type for programs *)
 type program = int * command list
-
-(* add here all useful functions and types  related to the AST: for instance  string_of_ functions *)
-
-
-type command =
-
-  | Push of int      (* Empile une valeur *)
-  | Pop              (* Dépile la valeur du sommet *)
-  | Swap             (* Échange les deux valeurs du sommet *)
-  
-  | Store            (* Stocke une valeur en mémoire *)
-  | Load             (* Charge une valeur depuis la mémoire *)
-  | Nget             (* Récupère la nième valeur de la pile *)
-  
-  | Add              (* Addition *)
-  | Sub              (* Soustraction *)
-  | Mul              (* Multiplication *)
-  | Div              (* Division *)
-    
-  | Print            (* Affiche la valeur du sommet *)
-
-
-
 let string_of_command = function
-  | _ -> "to be done"
+  | Push n -> "Push " ^ string_of_int n
+  | Pop -> "Pop"
+  | Swap -> "Swap"
+  | Nget -> "Nget"
+  | Store -> "Store"
+  | Load -> "Load"
+  | Add -> "Add"
+  | Sub -> "Sub"
+  | Mul -> "Mul"
+  | Div -> "Div"
+  | Mod  -> "Mod"
+  | Rem -> "Rem"
+  | Print -> "Print"
 
-let string_of_commands cmds = String.concat " " (List.map string_of_command cmds)
-
-let string_of_program (args, cmds) = Printf.sprintf "%i args: %s\n" args (string_of_commands cmds)
-
+let string_of_program (numargs, cmds) =
+  string_of_int numargs ^ ", " ^ 
+  "[" ^ String.concat "; " (List.map string_of_command cmds) ^ "]"
