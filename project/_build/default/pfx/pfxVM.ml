@@ -13,9 +13,9 @@ let parse_eval file =
     let lexbuf = Lexing.from_channel input_file in
     begin
       try
-        let pfx_prog = Parser.program Lexer.token lexbuf in
+        let pfx_prog = Lexer.program Lexer.token lexbuf in
          Eval.eval_program pfx_prog !args
-      with Parser.Error -> print_string "Syntax error"
+      with Lexer.Error -> print_string "Syntax error"
     end;
     close_in (input_file)
   with Sys_error _ -> print_endline ("Can't find file '" ^ file ^ "'")

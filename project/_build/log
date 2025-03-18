@@ -1,10 +1,10 @@
-# dune utop
+# dune build
 # OCAMLPARAM: unset
 # Workspace root: /home/chahboune/project-skeleton/project
-$ /usr/bin/nproc > /tmp/dunea895c0.output 2> /dev/null
+$ /usr/bin/nproc > /tmp/duneccca69.output 2> /dev/null
 # Auto-detected concurrency: 16
 # disable binary cache
-$ /usr/bin/ocamlc.opt -config > /tmp/dune86dd2d.output
+$ /usr/bin/ocamlc.opt -config > /tmp/duneee8fd6.output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -155,9 +155,13 @@ $ /usr/bin/ocamlc.opt -config > /tmp/dune86dd2d.output
 #      ; windows_unicode = false
 #      }
 #  }
-$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -24 -g -bin-annot -I pfx/basic/.utop/.utop.eobjs/byte -I /usr/lib/ocaml/bytes -I /usr/lib/ocaml/camomile -I /usr/lib/ocaml/camomile/default_config -I /usr/lib/ocaml/camomile/dyn -I /usr/lib/ocaml/camomile/lib_default -I /usr/lib/ocaml/camomile/library -I /usr/lib/ocaml/charInfo_width -I /usr/lib/ocaml/compiler-libs -I /usr/lib/ocaml/findlib -I /usr/lib/ocaml/lambda-term -I /usr/lib/ocaml/lwt -I /usr/lib/ocaml/lwt/unix -I /usr/lib/ocaml/lwt_log -I /usr/lib/ocaml/lwt_log/core -I /usr/lib/ocaml/lwt_react -I /usr/lib/ocaml/mew -I /usr/lib/ocaml/mew_vi -I /usr/lib/ocaml/mmap -I /usr/lib/ocaml/ocplib-endian -I /usr/lib/ocaml/ocplib-endian/bigstring -I /usr/lib/ocaml/react -I /usr/lib/ocaml/result -I /usr/lib/ocaml/seq -I /usr/lib/ocaml/threads -I /usr/lib/ocaml/trie -I /usr/lib/ocaml/utop -I /usr/lib/ocaml/zed -I pfx/basic/.basicPfx.objs/byte -I utils/.utils.objs/byte -no-alias-deps -o pfx/basic/.utop/.utop.eobjs/byte/dune__exe__Utop.cmo -c -impl pfx/basic/.utop/utop.ml-gen)
-> File "pfx/basic/.utop/utop.ml-gen", line 32, characters 0-14:
-> 32 | UTop_main.main ();
->      ^^^^^^^^^^^^^^
-> Error: Unbound module UTop_main
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl pfx/pfxVM__.ml) > _build/default/pfx/.pfxVM.eobjs/pfxVM__.ml.d
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl pfx/pfxVM.ml) > _build/default/pfx/.pfxVM.eobjs/pfxVM.ml.d
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -bin-annot -I pfx/.pfxVM.eobjs/byte -no-alias-deps -opaque -o pfx/.pfxVM.eobjs/byte/dune__exe.cmo -c -impl pfx/.pfxVM.eobjs/dune__exe.ml-gen)
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I pfx/.pfxVM.eobjs/byte -I pfx/basic/.basicPfx.objs/byte -I utils/.utils.objs/byte -no-alias-deps -opaque -open Dune__exe -o pfx/.pfxVM.eobjs/byte/dune__exe__PfxVM.cmo -c -impl pfx/pfxVM.ml)
+> File "pfx/pfxVM.ml", line 16, characters 23-36:
+> 16 |         let pfx_prog = Lexer.program Lexer.token lexbuf in
+>                             ^^^^^^^^^^^^^
+> Error: Unbound value Lexer.program
 [2]
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -I pfx/.pfxVM.eobjs/byte -I pfx/.pfxVM.eobjs/native -intf-suffix .ml-gen -no-alias-deps -opaque -o pfx/.pfxVM.eobjs/native/dune__exe.cmx -c -impl pfx/.pfxVM.eobjs/dune__exe.ml-gen)
