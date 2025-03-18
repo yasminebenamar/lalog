@@ -14,5 +14,4 @@ let rec generate (expr : Ast.expression) : BasicPfx.Ast.command list =
   | Binop (Bmul, e1, e2) -> (generate e1) @ (generate e2) @ [BasicPfx.Ast.Mul]
   | Binop (Bdiv, e1, e2) -> (generate e1) @ (generate e2) @ [BasicPfx.Ast.Div]
   | Binop (Bmod, e1, e2) -> (generate e1) @ (generate e2) @ [BasicPfx.Ast.Mod]
-  
-  | Uminus e -> [Push 0] @ generate e @ [ BasicPfx.Ast.Sub]  (* Négation d'une expression en soustrayant de zéro *)
+  | Uminus e -> [Push 0] @ generate e @ [ BasicPfx.Ast.Sub]  

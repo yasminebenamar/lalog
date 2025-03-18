@@ -1,10 +1,10 @@
-# dune exec ./compiler.ml -- basic/tests/an_example.expr
+# dune build
 # OCAMLPARAM: unset
 # Workspace root: /home/chahboune/project-skeleton
-$ /usr/bin/nproc > /tmp/dune2416df.output 2> /dev/null
+$ /usr/bin/nproc > /tmp/dunea6e258.output 2> /dev/null
 # Auto-detected concurrency: 16
 # disable binary cache
-$ /usr/bin/ocamlc.opt -config > /tmp/dune62df95.output
+$ /usr/bin/ocamlc.opt -config > /tmp/dune8a11cb.output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -154,3 +154,43 @@ $ /usr/bin/ocamlc.opt -config > /tmp/dune62df95.output
 #      ; windows_unicode = false
 #      }
 #  }
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl project/expr/main.ml) > _build/default/project/expr/.main.eobjs/main.ml.d
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl project/expr/compiler.ml) > _build/default/project/expr/.main.eobjs/compiler.ml.d
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -bin-annot -I project/expr/basic/.basicExpr.objs/byte -no-alias-deps -opaque -o project/expr/basic/.basicExpr.objs/byte/basicExpr.cmo -c -impl project/expr/basic/basicExpr.ml-gen)
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -intf project/expr/basic/ast.mli) > _build/default/project/expr/basic/.basicExpr.objs/ast.mli.d
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -intf project/expr/basic/eval.mli) > _build/default/project/expr/basic/.basicExpr.objs/eval.mli.d
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl project/expr/basic/ast.ml) > _build/default/project/expr/basic/.basicExpr.objs/ast.ml.d
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl project/expr/basic/eval.ml) > _build/default/project/expr/basic/.basicExpr.objs/eval.ml.d
+$ (cd _build/default && /usr/bin/ocamllex -q -o project/expr/basic/lexer.ml project/expr/basic/lexer.mll)
+$ (cd _build/default && /usr/bin/menhir --explain project/expr/basic/parser.mly --base project/expr/basic/parser --infer-write-query project/expr/basic/parser__mock.ml.mock)
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -intf project/expr/basic/toPfx.mli) > _build/default/project/expr/basic/.basicExpr.objs/toPfx.mli.d
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl project/expr/basic/toPfx.ml) > _build/default/project/expr/basic/.basicExpr.objs/toPfx.ml.d
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I project/expr/common/.common.objs/byte -no-alias-deps -opaque -o project/expr/common/.common.objs/byte/binOp.cmi -c -intf project/expr/common/binOp.mli)
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -intf project/pfx/basic/eval.mli) > _build/default/project/pfx/basic/.basicPfx.objs/eval.mli.d
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -intf project/pfx/basic/ast.mli) > _build/default/project/pfx/basic/.basicPfx.objs/ast.mli.d
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl project/pfx/basic/ast.ml) > _build/default/project/pfx/basic/.basicPfx.objs/ast.ml.d
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -bin-annot -I project/pfx/basic/.basicPfx.objs/byte -no-alias-deps -opaque -o project/pfx/basic/.basicPfx.objs/byte/basicPfx.cmo -c -impl project/pfx/basic/basicPfx.ml-gen)
+$ (cd _build/default && /usr/bin/ocamllex -q -o project/pfx/basic/lexer.ml project/pfx/basic/lexer.mll)
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl project/pfx/basic/eval.ml) > _build/default/project/pfx/basic/.basicPfx.objs/eval.ml.d
+$ (cd _build/default && /usr/bin/menhir --explain project/pfx/basic/parser.mly --base project/pfx/basic/parser --infer-write-query project/pfx/basic/parser__mock.ml.mock)
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -bin-annot -I project/utils/.utils.objs/byte -no-alias-deps -opaque -o project/utils/.utils.objs/byte/utils.cmo -c -impl project/utils/utils.ml-gen)
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -intf project/utils/location.mli) > _build/default/project/utils/.utils.objs/location.mli.d
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl project/utils/location.ml) > _build/default/project/utils/.utils.objs/location.ml.d
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl project/expr/basic/lexer.ml) > _build/default/project/expr/basic/.basicExpr.objs/lexer.ml.d
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl project/expr/basic/parser__mock.ml.mock) > _build/default/project/expr/basic/.basicExpr.objs/parser__mock.ml.mock.d
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -I project/expr/basic/.basicExpr.objs/byte -I project/expr/basic/.basicExpr.objs/native -intf-suffix .ml-gen -no-alias-deps -opaque -o project/expr/basic/.basicExpr.objs/native/basicExpr.cmx -c -impl project/expr/basic/basicExpr.ml-gen)
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I project/expr/common/.common.objs/byte -intf-suffix .ml -no-alias-deps -opaque -o project/expr/common/.common.objs/byte/binOp.cmo -c -impl project/expr/common/binOp.ml)
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl project/pfx/basic/lexer.ml) > _build/default/project/pfx/basic/.basicPfx.objs/lexer.ml.d
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl project/pfx/basic/parser__mock.ml.mock) > _build/default/project/pfx/basic/.basicPfx.objs/parser__mock.ml.mock.d
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I project/expr/common/.common.objs/byte -I project/expr/common/.common.objs/native -intf-suffix .ml -no-alias-deps -opaque -o project/expr/common/.common.objs/native/binOp.cmx -c -impl project/expr/common/binOp.ml)
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -I project/pfx/basic/.basicPfx.objs/byte -I project/pfx/basic/.basicPfx.objs/native -intf-suffix .ml-gen -no-alias-deps -opaque -o project/pfx/basic/.basicPfx.objs/native/basicPfx.cmx -c -impl project/pfx/basic/basicPfx.ml-gen)
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -I project/utils/.utils.objs/byte -I project/utils/.utils.objs/native -intf-suffix .ml-gen -no-alias-deps -opaque -o project/utils/.utils.objs/native/utils.cmx -c -impl project/utils/utils.ml-gen)
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I project/utils/.utils.objs/byte -no-alias-deps -opaque -open Utils -o project/utils/.utils.objs/byte/utils__Location.cmi -c -intf project/utils/location.mli)
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o project/expr/common/common.cma project/expr/common/.common.objs/byte/binOp.cmo)
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I project/utils/.utils.objs/byte -intf-suffix .ml -no-alias-deps -opaque -open Utils -o project/utils/.utils.objs/byte/utils__Location.cmo -c -impl project/utils/location.ml)
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o project/expr/common/common.cmxa project/expr/common/.common.objs/native/binOp.cmx)
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o project/utils/utils.cma project/utils/.utils.objs/byte/utils.cmo project/utils/.utils.objs/byte/utils__Location.cmo)
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I project/utils/.utils.objs/byte -I project/utils/.utils.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Utils -o project/utils/.utils.objs/native/utils__Location.cmx -c -impl project/utils/location.ml)
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o project/utils/utils.cmxa project/utils/.utils.objs/native/utils.cmx project/utils/.utils.objs/native/utils__Location.cmx)
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -shared -linkall -I project/expr/common -o project/expr/common/common.cmxs project/expr/common/common.cmxa)
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -shared -linkall -I project/utils -o project/utils/utils.cmxs project/utils/utils.cmxa)
