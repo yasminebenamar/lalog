@@ -8,6 +8,7 @@
   let print_token = function
     | EOF -> print_string "EOF"
     | PUSH -> print_string "PUSH"
+    | PUSH n -> print_string ("PUSH " ^ string_of_int n)
     | POP -> print_string "POP"
     | SWAP -> print_string "SWAP"
     | NGET -> print_string "NGET"
@@ -20,11 +21,20 @@
     | REM -> print_string "REM"
     | MOD -> print_string "MOD"
     | PRINT -> print_string "PRINT"
+    
     | INT i -> print_int i
+  
 
-  let mk_int nb =
+  (* Exercice 7: Locations *)
+
+  let mk_int loc nb =
     try INT (int_of_string nb)
-    with Failure _ -> failwith (Printf.sprintf "Illegal integer '%s': " nb)
+    with Failure _ -> raise (Utils.Location.Error (Printf.sprintf "Illegal integer '%s': " nb, loc))
+
+  let mk_push loc nb =
+    try PUSH (int_of_string nb)
+    with Failure _ -> raise (Utils.Location.Error (Printf.sprintf "Illegal push operation '%s': " nb, loc))
+
 }
 
 let newline = (['\n' '\r'] | "\r\n")
