@@ -1,6 +1,0 @@
-(** @canonical Dune__exe.PfxVM *)
-module PfxVM = Dune__exe__PfxVM
-
-
-(** @canonical Dune__exe.PfxVM__ *)
-module PfxVM__ = Dune__exe__PfxVM__

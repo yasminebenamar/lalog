@@ -1,3 +1,4 @@
 (executable
  (name pfxVM)
+ (modules pfxVM)
  (libraries utils basicPfx))

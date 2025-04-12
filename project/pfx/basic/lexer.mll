@@ -1,17 +1,13 @@
 {
-  open Utils
-  type token =
-    | EOF | PUSH | POP | SWAP | NGET | STORE | LOAD
-    | ADD | SUB | MUL | DIV | REM | MOD | PRINT
-    | INT of int
+  open Parser
+  
+ 
 
   let print_token = function
     | EOF -> print_string "EOF"
-    | PUSH -> print_string "PUSH"
     | PUSH n -> print_string ("PUSH " ^ string_of_int n)
     | POP -> print_string "POP"
     | SWAP -> print_string "SWAP"
-    | NGET -> print_string "NGET"
     | STORE -> print_string "STORE"
     | LOAD -> print_string "LOAD"
     | ADD -> print_string "ADD"
@@ -21,19 +17,16 @@
     | REM -> print_string "REM"
     | MOD -> print_string "MOD"
     | PRINT -> print_string "PRINT"
-    
     | INT i -> print_int i
   
 
-  (* Exercice 7: Locations *)
 
-  let mk_int loc nb =
+let mk_int nb =
     try INT (int_of_string nb)
-    with Failure _ -> raise (Utils.Location.Error (Printf.sprintf "Illegal integer '%s': " nb, loc))
-
-  let mk_push loc nb =
+    with Failure _ -> raise (Failure (Printf.sprintf "Illegal integer '%s'" nb))
+  let mk_push nb =
     try PUSH (int_of_string nb)
-    with Failure _ -> raise (Utils.Location.Error (Printf.sprintf "Illegal push operation '%s': " nb, loc))
+    with Failure _ -> failwith (Printf.sprintf "Illegal push operation '%s': " nb ) 
 
 }
 
@@ -43,32 +36,23 @@ let not_newline_char = [^ '\n' '\r']
 let digit = ['0'-'9']
 
 rule token = parse
-  (* newlines *)
-  | newline { token lexbuf }
-  (* blanks *)
-  | blank + { token lexbuf }
-  (* end of file *)
-  | eof      { EOF }
-  (* comments *)
-  | "--" not_newline_char*  { token lexbuf }
-  (* integers *)
-  | digit+ as nb           { mk_int nb }
-  (* commands *)
-  | "Push" | "push"    { PUSH }
-  | "Pop" | "pop"      { POP }
-  | "Swap" | "swap"    { SWAP }
-  | "Nget" | "nget"    { NGET }
-  | "Store" | "store"  { STORE }
-  | "Load" | "load"    { LOAD }
-  | "Add" | "add"      { ADD }
-  | "Sub" | "sub"      { SUB }
-  | "Mul" | "mul"      { MUL }
-  | "Div" | "div"      { DIV }
-  | "Rem" | "rem"      { REM }
-  | "Mod" | "mod"      { MOD }
-  | "Print" | "print"  { PRINT }
-  (* illegal characters *)
-  | _ as c   { raise (Location.Error(Printf.sprintf "Illegal character '%c': " c, Location.curr lexbuf)) }
+  | [' ' '\t' '\n'] { token lexbuf }  (* Skip whitespace *)
+  | ['0'-'9']+ as nb { INT (int_of_string nb) }
+| ("Push" | "push") blank* (digit+ as nb) { mk_push nb }
+  | "Pop" | "pop" { POP }
+  | "Swap" | "swap" { SWAP }
+  | "Store" | "store" { STORE }
+  | "Load" | "load" { LOAD }
+  | "Add" | "add" { ADD }
+  | "Sub" | "sub" { SUB }
+  | "Mul" | "mul" { MUL }
+  | eof { EOF }
+  | "Div" | "div" { DIV }
+  | "Rem" | "rem" { REM }
+  | "Mod" | "mod" { MOD }
+  | "Print" | "print" { PRINT }
+| "--" not_newline_char* newline? { token lexbuf }  (* Skip comments *)
+  | _ as c { raise (Failure (Printf.sprintf "Illegal character '%c'" c)) }
 
 
 {

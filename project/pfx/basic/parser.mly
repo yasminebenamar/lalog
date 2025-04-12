@@ -4,10 +4,9 @@
 
 %token EOF
 %token <int> INT
-%token PUSH
+%token <int> PUSH                 
 %token POP
 %token SWAP 
-%token NGET 
 %token STORE
 %token LOAD
 %token ADD
@@ -16,9 +15,6 @@
 %token DIV
 %token REM
 %token MOD
-%token LPAR
-%token RPAR
-%token COMMA
 %token PRINT
 
 
@@ -39,10 +35,9 @@ command_list:
   | command command_list { $1 :: $2 }  
 
 command:
-  | PUSH INT { Push $2 }
-  | POP { Pop }
+
+  | PUSH INT { Push $2 }  | POP { Pop }
   | SWAP { Swap }
-  | NGET INT { Nget $2 }
   | STORE { Store }
   | LOAD { Load }
   | ADD { Add }

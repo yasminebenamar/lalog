@@ -2,8 +2,20 @@
 (* The type of tokens. *)
 
 type token = 
+  | SWAP
+  | SUB
+  | STORE
+  | REM
+  | PUSH of (int)
+  | PRINT
+  | POP
+  | MUL
+  | MOD
+  | LOAD
   | INT of (int)
   | EOF
+  | DIV
+  | ADD
 
 (* This exception is raised by the monolithic API functions. *)
 
