@@ -63,7 +63,7 @@ project
 │   │   ├── parser.mly  
 │   │   ├── tests: for tests  
 │   │   │   └── an_example.expr  
-│   │   ├── toPfx.ml               
+│   │   ├── toPfx.ml             
 │   │   └── toPfx.mli  
 │   ├── common  
 │   │   ├── binOp.ml  
@@ -75,8 +75,15 @@ project
 │   │   ├── ast.ml  
 │   │   ├── ast.mli  
 │   │   ├── lexer.mll  
-│   │   └── parser.mly  
-│   └── main.ml  
+│   │   ├── parser.mly
+│   |   ├──toPfx.ml
+│   │   ├── toPfx.mli
+│   └── main.ml 
+├── my_tests: for tests
+│   ├── count_a_occurrences.ml
+│   ├── count_a_occurrences.mll
+│   ├── simple_expr_lexer_standalone.ml
+│   ├── simple_expr_lexer_standalone.mll
 ├── pfx: the pfx VM  
 │   ├── basic  
 │   │   ├── ast.ml  
@@ -89,6 +96,7 @@ project
 │   │   └── tests: for tests  
 │   │       └── ok_prog.pfx  
 │   └── pfxVM.ml: main file for the pfx VM  
+│   ├── dune
 └── utils  
     ├── dune  
     ├── location.ml: module offering a data type for a location in a file  
@@ -102,22 +110,28 @@ Progress
 - All of the exercises up to 8 were done successfully (including compilation and tests).  
 - Exercises 9 to 12 were done but without being tested: we couldn't figure out how to run tests for the lambda expressions (e.g., `((λx.λy.(x − y)) 12) 8`).
 
+===============
+
+Known bugs and issues
+---------------------
+
+- We were not able to run tests for the lambda expressions (e.g., `((λx.λy.(x − y)) 12) 8`) in exercises 9 to 11.
 
 ===============
 
 Helpful resources
 -----------------
 
+- Most of the time, we used Stack Overflow to look for solutions to some bugs we encountered.  
 - Compilation notes provided on Moodle were really helpful.
-- The OCaml documentation was useful for understanding the syntax and semantics of the language.
-
 
 ===============
 
 Difficulties
 ------------
 
+- Figuring out how to translate coding instructions to a new programming language we are not used to.  
+- Using new tools and new commands to compile the script and make it work.  
 - Coding in a new environment and a new paradigm.  
-- encountring some difficulties with the dune build system at the beginning which
-  leads as to Testing the code using `utop`, but we figured it out in the end.  
+- Testing the code using `utop`, but we figured it out in the end.  
 - Testing in section 10.
